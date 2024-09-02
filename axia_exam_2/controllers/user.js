@@ -26,7 +26,7 @@ const getUser = async (req, res) => {
     const { emailAddress, password } = req.body
     try{
     const savedUser = await User.findOne({ emailAddress })
-    const check = bcrypt.compare(password, savedUser.password)
+    const check = bcrypt.compareSync(password, savedUser.password)
     if(!savedUser){
         res.send("User cannot be found")
     }
